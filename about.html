@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Nevin Kadlec | Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #3498db;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 60px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* About Hero */
+        .about-hero {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .about-hero-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .profile-image {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 0 auto;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .about-text h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .about-text .subtitle {
+            font-size: 1.2rem;
+            color: #3498db;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .about-text p {
+            color: #666;
+            margin-bottom: 1rem;
+            line-height: 1.7;
+        }
+
+        /* Skills Section */
+        .skills-section {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .skill-category {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .skill-category h3 {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list {
+            list-style: none;
+        }
+
+        .skill-list li {
+            padding: 0.5rem 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-list li:before {
+            content: "✓";
+            color: #3498db;
+            font-weight: bold;
+        }
+
+        /* Journey Section */
+        .journey-section {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .journey-timeline {
+            margin-top: 3rem;
+        }
+
+        .timeline-item {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            padding-bottom: 2rem;
+            border-bottom: 1px solid #e9ecef;
+        }
+
+        .timeline-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .timeline-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .timeline-content h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .timeline-content .timeline-date {
+            color: #3498db;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Values Section */
+        .values-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 10px;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .value-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .value-card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .value-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 10px;
+            margin-bottom: 60px;
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 30px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .btn-light {
+            background: white;
+            color: #667eea;
+            border-color: white;
+        }
+
+        .btn-light:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .about-hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .about-text h1 {
+                font-size: 2rem;
+            }
+
+            .skills-grid,
+            .values-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .timeline-item {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .timeline-icon {
+                align-self: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Nevin Kadlec</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- About Hero -->
+            <section class="about-hero">
+                <div class="about-hero-content">
+                    <div class="profile-image">
+                        <img src="images/profile.png" alt="Nevin Kadlec - Full Stack Developer" class="profile-image" style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; box-shadow: 0 10px 30px rgba(0,0,0,0.2);" />
+                    </div>
+                    <div class="about-text">
+                        <h1>About Nevin Kadlec</h1>
+                        <p class="subtitle">Full Stack Developer & Business Problem Solver</p>
+                        <p>
+                            I'm a passionate full-stack developer with over 25 years of programming experience, 
+                            specializing in creating practical technology solutions for small businesses. My journey 
+                            began at age 8 when my mother took me to her college computer course, sparking a lifelong 
+                            fascination with how computers work.
+                        </p>
+                        <p>
+                            Through blue collar jobs, trucking, and formal education, I've maintained programming as 
+                            a constant passion - always exploring new languages, tools, and technologies. After a 
+                            dangerous trucking incident in winter 2023, I decided to transform this decades-long 
+                            hobby into a professional career.
+                        </p>
+                        <p>
+                            Based in Fargo, North Dakota, I now help businesses automate manual processes and improve 
+                            efficiency through custom applications. My unique combination of technical expertise, 
+                            real-world work experience, and genuine understanding of business operations allows me 
+                            to create solutions that actually solve problems and provide lasting value.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Skills Section -->
+            <section class="skills-section">
+                <h2 class="section-title">Technical Expertise</h2>
+                <p class="section-subtitle">
+                    A comprehensive skill set focused on delivering complete business solutions
+                </p>
+                
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3>🌐 Frontend Development</h3>
+                        <ul class="skill-list">
+                            <li>JavaScript (ES6+)</li>
+                            <li>HTML5 & CSS3</li>
+                            <li>Responsive Web Design</li>
+                            <li>User Interface Design</li>
+                            <li>Cross-Browser Compatibility</li>
+                            <li>Web Performance Optimization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🐍 Backend & Automation</h3>
+                        <ul class="skill-list">
+                            <li>Python Programming</li>
+                            <li>Data Analysis & Visualization</li>
+                            <li>Business Process Automation</li>
+                            <li>pandas & NumPy</li>
+                            <li>Matplotlib & Seaborn</li>
+                            <li>CSV/Excel Data Processing</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>💼 Business Applications</h3>
+                        <ul class="skill-list">
+                            <li>Web Application Development</li>
+                            <li>Task Management Systems</li>
+                            <li>Inventory Management</li>
+                            <li>Business Intelligence</li>
+                            <li>Report Generation</li>
+                            <li>Workflow Optimization</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="skill-category">
+                        <h3>🔧 Development Tools</h3>
+                        <ul class="skill-list">
+                            <li>Git & GitHub</li>
+                            <li>GitHub Pages Deployment</li>
+                            <li>RESTful API Development</li>
+                            <li>Database Design</li>
+                            <li>Testing & Debugging</li>
+                            <li>Documentation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Journey Section -->
+            <section class="journey-section">
+                <h2 class="section-title">My Journey</h2>
+                <p class="section-subtitle">
+                    From side hustle to building technology solutions that matter
+                </p>
+                
+                <div class="journey-timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">💻</div>
+                        <div class="timeline-content">
+                            <h3>Early Computing Fascination</h3>
+                            <div class="timeline-date">1989-1999</div>
+                            <p>
+                                At age 8, my fascination with computers began when my mom took me to her college computer 
+                                course. My love for video games sparked curiosity about how coding actually works, setting 
+                                the foundation for a lifelong passion with technology.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🔧</div>
+                        <div class="timeline-content">
+                            <h3>Blue Collar Years & Hobby Coding</h3>
+                            <div class="timeline-date">1999-2006</div>
+                            <p>
+                                After graduation, I worked blue collar jobs (warehouses, construction) while exploring 
+                                coding as a hobby using the early internet. It was challenging, but my curiosity kept 
+                                me experimenting with different programming concepts and languages.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🎓</div>
+                        <div class="timeline-content">
+                            <h3>Formal Programming Education</h3>
+                            <div class="timeline-date">2006-2008</div>
+                            <p>
+                                Took formal coding classes (COBOL, Java, Oracle SQL, ASP.NET, Visual Basic) to transition 
+                                away from manual labor. A near-fatal incident interrupted my studies and recovery took time, 
+                                but I maintained programming as a passionate hobby.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🏭</div>
+                        <div class="timeline-content">
+                            <h3>Warehouse & Factory Years</h3>
+                            <div class="timeline-date">2009-2017</div>
+                            <p>
+                                Returned to blue collar work in warehouses and factories while continuing to explore 
+                                programming as a hobby. Kept learning new languages, tools, and libraries as they 
+                                came to my attention, maintaining my passion for technology.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🚛</div>
+                        <div class="timeline-content">
+                            <h3>Trucking Career & Continued Learning</h3>
+                            <div class="timeline-date">2017-2024</div>
+                            <p>
+                                Earned my Class A CDL and drove trucks while continuing to explore new languages, tools, 
+                                and libraries as a hobby. After a dangerous ice storm incident in winter 2023, I decided 
+                                it was time to transform my lifelong passion into a professional career.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🎯</div>
+                        <div class="timeline-content">
+                            <h3>Career Transition</h3>
+                            <div class="timeline-date">2024-2025</div>
+                            <p>
+                                Enrolled in Codecademy in April 2024, left trucking in August 2024, and began building 
+                                professional portfolio projects. Started Uber driving in January 2025 as a bridge while 
+                                launching my development career focused on practical business solutions.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🚀</div>
+                        <div class="timeline-content">
+                            <h3>Full-Stack Development Services</h3>
+                            <div class="timeline-date">2025 - Present</div>
+                            <p>
+                                Now offering comprehensive development services, leveraging decades of programming passion 
+                                and real-world work experience to create technology solutions that help small businesses 
+                                operate more efficiently and successfully.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Values Section -->
+            <section class="values-section">
+                <h2 class="section-title">What Drives Me</h2>
+                <p class="section-subtitle">
+                    The principles that guide every project and client relationship
+                </p>
+                
+                <div class="values-grid">
+                    <div class="value-card">
+                        <div class="value-icon">👨‍👩‍👧‍👦</div>
+                        <h3>Family First</h3>
+                        <p>
+                            Every project I take on is motivated by creating better opportunities for my family. 
+                            This personal drive ensures I give my absolute best to every client.
+                        </p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">🎯</div>
+                        <h3>Practical Solutions</h3>
+                        <p>
+                            I focus on building applications that solve real business problems, not just impressive 
+                            technical demonstrations. Every feature serves a practical purpose.
+                        </p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">🤝</div>
+                        <h3>Partnership Approach</h3>
+                        <p>
+                            I work closely with clients to understand their specific needs and constraints, ensuring 
+                            solutions fit their workflow and budget requirements.
+                        </p>
+                    </div>
+                    
+                    <div class="value-card">
+                        <div class="value-icon">📈</div>
+                        <h3>Business Impact</h3>
+                        <p>
+                            Success is measured by the positive impact on your business operations, efficiency 
+                            improvements, and ROI from the solutions I deliver.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2>Ready to Build Something Great Together?</h2>
+                <p>
+                    Let's discuss how custom development can help your business operate more efficiently 
+                    and achieve your goals.
+                </p>
+                <a href="contact.html" class="btn btn-light">Start a Conversation</a>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/nevin-kadlec/" target="_blank">💼</a>
+                <a href="mailto:3rza.kaneki@gmail.com">📧</a>
+                <a href="https://github.com/ErzaKaneki" target="_blank">💻</a>
+            </div>
+            <p>&copy; 2025 Nevin Kadlec. Building technology solutions for business success.</p>
+        </div>
+    </footer>
+</body>
+</html>
