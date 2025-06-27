@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Services - Nevin Kadlec | Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #3498db;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 60px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Services Hero */
+        .services-hero {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .services-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .services-hero .subtitle {
+            font-size: 1.2rem;
+            color: #3498db;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .services-hero p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Services Grid */
+        .services-section {
+            margin-bottom: 80px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-bottom: 60px;
+        }
+
+        .service-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border-top: 4px solid #3498db;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            color: #3498db;
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .service-card .price-range {
+            background: #e3f2fd;
+            color: #1976d2;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-weight: 600;
+            display: inline-block;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .service-card p {
+            color: #666;
+            margin-bottom: 1.5rem;
+            line-height: 1.7;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-bottom: 1.5rem;
+        }
+
+        .service-features li {
+            padding: 0.3rem 0;
+            color: #666;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-features li:before {
+            content: "✓";
+            color: #27ae60;
+            font-weight: bold;
+        }
+
+        .timeline {
+            color: #3498db;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Process Section */
+        .process-section {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin: 0 auto 1rem;
+        }
+
+        .process-step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .process-step p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Pricing Philosophy */
+        .pricing-section {
+            background: #f8f9fa;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 15px;
+        }
+
+        .pricing-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .pricing-highlight {
+            background: white;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+
+        .pricing-highlight h4 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+        }
+
+        .pricing-highlight p {
+            color: #666;
+            line-height: 1.7;
+        }
+
+        /* Why Choose Me */
+        .why-choose-section {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .advantages-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .advantage-card {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .advantage-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #3498db;
+        }
+
+        .advantage-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .advantage-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 60px 0;
+            text-align: center;
+            border-radius: 15px;
+            margin-bottom: 60px;
+        }
+
+        .cta-section h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 15px 35px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 1.1rem;
+        }
+
+        .btn-light {
+            background: white;
+            color: #667eea;
+            border-color: white;
+        }
+
+        .btn-light:hover {
+            background: transparent;
+            color: white;
+            border-color: white;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .services-hero h1 {
+                font-size: 2rem;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .advantages-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .service-card {
+                padding: 2rem;
+            }
+
+            .cta-section h2 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Nevin Kadlec</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="services.html" class="active">Services</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Services Hero -->
+            <section class="services-hero">
+                <h1>Development Services</h1>
+                <p class="subtitle">Practical Technology Solutions for Small Business Success</p>
+                <p>
+                    I specialize in creating custom web applications, business automation tools, and professional 
+                    websites that solve real problems and deliver measurable value. With 25+ years of programming 
+                    experience and real-world business understanding, I build solutions that actually work for your operations.
+                </p>
+            </section>
+
+            <!-- Services Grid -->
+            <section class="services-section">
+                <div class="services-grid">
+                    <!-- Web Development Service -->
+                    <div class="service-card">
+                        <div class="service-icon">🌐</div>
+                        <h3>Professional Web Development</h3>
+                        <div class="price-range">$800 - $3,500</div>
+                        <p>
+                            Modern, responsive business websites and landing pages designed to convert visitors 
+                            into customers. Perfect for establishing professional online presence and growing your business.
+                        </p>
+                        
+                        <ul class="service-features">
+                            <li>Mobile-responsive design for all devices</li>
+                            <li>Professional business branding</li>
+                            <li>Contact forms and lead capture</li>
+                            <li>SEO optimization for search engines</li>
+                            <li>Fast loading and performance optimized</li>
+                            <li>Easy content updates and maintenance</li>
+                        </ul>
+                        
+                        <div class="timeline">📅 Typical Timeline: 2-4 weeks</div>
+                    </div>
+
+                    <!-- Business Automation Service -->
+                    <div class="service-card">
+                        <div class="service-icon">⚙️</div>
+                        <h3>Business Process Automation</h3>
+                        <div class="price-range">$500 - $2,500</div>
+                        <p>
+                            Python-powered automation tools that eliminate manual tasks, reduce errors, and save 
+                            valuable time. Transform repetitive processes into efficient, automated workflows.
+                        </p>
+                        
+                        <ul class="service-features">
+                            <li>Inventory management and tracking</li>
+                            <li>Data analysis and reporting automation</li>
+                            <li>CSV/Excel processing and visualization</li>
+                            <li>Automated alerts and notifications</li>
+                            <li>Business intelligence dashboards</li>
+                            <li>Custom calculations and analytics</li>
+                        </ul>
+                        
+                        <div class="timeline">📅 Typical Timeline: 1-3 weeks</div>
+                    </div>
+
+                    <!-- Web Applications Service -->
+                    <div class="service-card">
+                        <div class="service-icon">📱</div>
+                        <h3>Custom Web Applications</h3>
+                        <div class="price-range">$1,200 - $5,000</div>
+                        <p>
+                            Interactive web-based tools and dashboards tailored to your specific business needs. 
+                            From task management to customer portals, built with modern JavaScript technology.
+                        </p>
+                        
+                        <ul class="service-features">
+                            <li>Task and project management systems</li>
+                            <li>Customer relationship management (CRM)</li>
+                            <li>Interactive dashboards and analytics</li>
+                            <li>Multi-user collaboration tools</li>
+                            <li>Data visualization and reporting</li>
+                            <li>Real-time updates and notifications</li>
+                        </ul>
+                        
+                        <div class="timeline">📅 Typical Timeline: 3-6 weeks</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Process Section -->
+            <section class="process-section">
+                <h2 class="section-title">How We Work Together</h2>
+                <p class="section-subtitle">
+                    A detailed, email-focused process that ensures clear communication and better project outcomes
+                </p>
+                
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h4>Email Discovery</h4>
+                        <p>
+                            You provide detailed information about your business challenges and requirements through 
+                            our comprehensive contact form. I respond with thoughtful questions and initial ideas 
+                            to ensure I understand your needs completely.
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h4>Detailed Proposal</h4>
+                        <p>
+                            I create a comprehensive written proposal with timeline, features, and fixed pricing. 
+                            All communication is documented via email, creating a clear project roadmap and 
+                            paper trail for reference.
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h4>Development & Updates</h4>
+                        <p>
+                            Regular email updates with screenshots, progress reports, and demo links keep you 
+                            informed. You can provide feedback and request adjustments through detailed written 
+                            communication that ensures nothing gets missed.
+                        </p>
+                    </div>
+                    
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h4>Testing & Delivery</h4>
+                        <p>
+                            Thorough testing ensures everything works perfectly before launch. Written instructions 
+                            and documentation help you understand your new system, with ongoing email support 
+                            for any questions that arise.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Pricing Philosophy -->
+            <section class="pricing-section">
+                <h2 class="section-title">Transparent Pricing</h2>
+                <p class="section-subtitle">
+                    Fixed project pricing based on value delivered, not hours worked
+                </p>
+                
+                <div class="pricing-highlight">
+                    <h4>Why Fixed Project Pricing?</h4>
+                    <p>
+                        You deserve to know exactly what you're investing upfront. My project-based pricing means 
+                        no surprises, no scope creep charges, and no hourly rate anxiety. You pay for results, 
+                        not time. Every project includes planning, development, testing, and basic training - 
+                        everything needed to get your solution working successfully for your business.
+                    </p>
+                </div>
+            </section>
+
+            <!-- Why Choose Me -->
+            <section class="why-choose-section">
+                <h2 class="section-title">Why Work With Me?</h2>
+                <p class="section-subtitle">
+                    25+ years of programming passion combined with real-world business experience
+                </p>
+                
+                <div class="advantages-grid">
+                    <div class="advantage-card">
+                        <div class="advantage-icon">🎯</div>
+                        <h4>Practical Solutions Focus</h4>
+                        <p>
+                            I focus on solving your actual business problems, not just building impressive technology. 
+                            Every feature serves a practical purpose and delivers measurable value to your operations.
+                        </p>
+                    </div>
+                    
+                    <div class="advantage-card">
+                        <div class="advantage-icon">🔧</div>
+                        <h4>Real-World Experience</h4>
+                        <p>
+                            My blue-collar background means I understand how businesses actually operate. 
+                            I've worked in warehouses, factories, and trucking - I get your daily challenges.
+                        </p>
+                    </div>
+                    
+                    <div class="advantage-card">
+                        <div class="advantage-icon">💪</div>
+                        <h4>Proven Reliability</h4>
+                        <p>
+                            25+ years of consistent programming passion proves this isn't a career experiment. 
+                            I'm committed to your long-term success and building lasting business relationships.
+                        </p>
+                    </div>
+                    
+                    <div class="advantage-card">
+                        <div class="advantage-icon">🤝</div>
+                        <h4>Partnership Mindset</h4>
+                        <p>
+                            I work with you, not just for you. Your input guides every decision, and I explain 
+                            everything in plain English. No technical jargon, no mysterious black boxes.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- CTA Section -->
+            <section class="cta-section">
+                <h2>Ready to Streamline Your Business?</h2>
+                <p>
+                    Let's discuss how custom development can help your business operate more efficiently, 
+                    save time, and increase profitability. No commitment required for our initial conversation.
+                </p>
+                <a href="contact.html" class="btn btn-light">Schedule a Free Consultation</a>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/nevin-kadlec/" target="_blank">💼</a>
+                <a href="mailto:3rza.kaneki@gmail.com">📧</a>
+                <a href="https://github.com/ErzaKaneki" target="_blank">💻</a>
+            </div>
+            <p>&copy; 2025 Nevin Kadlec. Building technology solutions for business success.</p>
+        </div>
+    </footer>
+</body>
+</html>
