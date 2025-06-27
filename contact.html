@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Nevin Kadlec | Full Stack Developer</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        /* Navigation */
+        nav {
+            background: #2c3e50;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            color: #fff;
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-decoration: none;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-menu a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover,
+        .nav-menu a.active {
+            color: #3498db;
+        }
+
+        /* Main Content */
+        main {
+            margin-top: 80px;
+            padding: 60px 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Contact Hero */
+        .contact-hero {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .contact-hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .contact-hero .subtitle {
+            font-size: 1.2rem;
+            color: #3498db;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+
+        .contact-hero p {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.7;
+        }
+
+        /* Contact Content */
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 60px;
+        }
+
+        .contact-form-section,
+        .contact-info-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .contact-form-section h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .contact-form-section p {
+            color: #666;
+            margin-bottom: 2rem;
+            line-height: 1.7;
+        }
+
+        /* Form Styles */
+        .contact-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            padding: 12px 15px;
+            border: 2px solid #e9ecef;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-family: inherit;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        .btn-submit {
+            background: #3498db;
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #2980b9;
+        }
+
+        /* Contact Info */
+        .contact-info-section h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1.5rem;
+            color: #2c3e50;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: #3498db;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: #2c3e50;
+        }
+
+        .contact-details p {
+            color: #666;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        .contact-details a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        .contact-details a:hover {
+            text-decoration: underline;
+        }
+
+        /* Response Time */
+        .response-time {
+            background: #e8f5e8;
+            border: 1px solid #27ae60;
+            border-radius: 8px;
+            padding: 1rem;
+            margin-top: 2rem;
+            text-align: center;
+        }
+
+        .response-time h4 {
+            color: #27ae60;
+            margin-bottom: 0.5rem;
+        }
+
+        .response-time p {
+            color: #2c5432;
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            padding: 60px 0;
+            margin-bottom: 60px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+            color: #666;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .faq-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .faq-item {
+            padding: 2rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+            border-left: 4px solid #3498db;
+        }
+
+        .faq-item h4 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            color: #2c3e50;
+        }
+
+        .faq-item p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .social-links {
+            margin-bottom: 1rem;
+        }
+
+        .social-links a {
+            color: white;
+            font-size: 1.5rem;
+            margin: 0 1rem;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .social-links a:hover {
+            color: #3498db;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            .contact-hero h1 {
+                font-size: 2rem;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .contact-form-section,
+            .contact-info-section {
+                padding: 2rem;
+            }
+
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <a href="index.html" class="logo">Nevin Kadlec</a>
+            <ul class="nav-menu">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="portfolio.html">Portfolio</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main>
+        <div class="container">
+            <!-- Contact Hero -->
+            <section class="contact-hero">
+                <h1>Let's Work Together</h1>
+                <p class="subtitle">Ready to Streamline Your Business Operations?</p>
+                <p>
+                    I prefer detailed email communication to ensure we capture all your requirements accurately 
+                    and create a clear project roadmap. This approach leads to better results and fewer 
+                    misunderstandings. Let's start the conversation!
+                </p>
+            </section>
+
+            <!-- Contact Content -->
+            <div class="contact-content">
+                <!-- Contact Form -->
+                <div class="contact-form-section">
+                    <h2>Tell Me About Your Project</h2>
+                    <p>
+                        The more details you provide, the better I can understand your needs and provide 
+                        a comprehensive response. Don't worry about being too detailed - I love thorough 
+                        project discussions!
+                    </p>
+
+                    <form class="contact-form" action="#" method="POST">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="name">Your Name *</label>
+                                <input type="text" id="name" name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="business">Business Name</label>
+                                <input type="text" id="business" name="business">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="email">Email Address *</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone (Optional)</label>
+                                <input type="tel" id="phone" name="phone">
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="business-type">What type of business do you have?</label>
+                            <select id="business-type" name="business-type">
+                                <option value="">Select business type</option>
+                                <option value="retail">Retail/E-commerce</option>
+                                <option value="service">Service Business</option>
+                                <option value="manufacturing">Manufacturing</option>
+                                <option value="restaurant">Restaurant/Food Service</option>
+                                <option value="healthcare">Healthcare</option>
+                                <option value="construction">Construction</option>
+                                <option value="professional">Professional Services</option>
+                                <option value="nonprofit">Non-Profit</option>
+                                <option value="other">Other</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="service-interest">What type of solution interests you most?</label>
+                            <select id="service-interest" name="service-interest">
+                                <option value="">Select service type</option>
+                                <option value="website">Professional Business Website</option>
+                                <option value="automation">Business Process Automation</option>
+                                <option value="web-app">Custom Web Application</option>
+                                <option value="multiple">Multiple Services</option>
+                                <option value="unsure">Not Sure Yet</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="current-challenge">What's your biggest business challenge right now?</label>
+                            <textarea id="current-challenge" name="current-challenge" placeholder="Describe the manual processes, time-consuming tasks, or operational inefficiencies you'd like to solve..."></textarea>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="current-process">How do you currently handle this process?</label>
+                            <textarea id="current-process" name="current-process" placeholder="Walk me through your current workflow - spreadsheets, manual tracking, paper forms, etc..."></textarea>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="timeline">Ideal Timeline</label>
+                                <select id="timeline" name="timeline">
+                                    <option value="">Select timeline</option>
+                                    <option value="asap">As soon as possible</option>
+                                    <option value="1-month">Within 1 month</option>
+                                    <option value="2-3-months">2-3 months</option>
+                                    <option value="flexible">Flexible timing</option>
+                                    <option value="planning">Just planning ahead</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="budget">Budget Range</label>
+                                <select id="budget" name="budget">
+                                    <option value="">Select budget range</option>
+                                    <option value="under-1k">Under $1,000</option>
+                                    <option value="1k-2.5k">$1,000 - $2,500</option>
+                                    <option value="2.5k-5k">$2,500 - $5,000</option>
+                                    <option value="5k-plus">$5,000+</option>
+                                    <option value="flexible">Flexible based on value</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="additional-info">Anything else you'd like me to know?</label>
+                            <textarea id="additional-info" name="additional-info" placeholder="Special requirements, questions about my services, or any other details that might be helpful..."></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-submit">Send Project Details</button>
+                    </form>
+
+                    <div class="response-time">
+                        <h4>⚡ Typical Response Time</h4>
+                        <p>I'll respond within 24 hours (usually much faster) with questions, ideas, and next steps.</p>
+                    </div>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="contact-info-section">
+                    <h3>Get In Touch</h3>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">📧</div>
+                        <div class="contact-details">
+                            <h4>Email (Preferred)</h4>
+                            <p>
+                                <a href="mailto:3rza.kaneki@gmail.com">Email Me</a><br>
+                                Perfect for detailed project discussions and maintaining clear communication records.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">💼</div>
+                        <div class="contact-details">
+                            <h4>LinkedIn</h4>
+                            <p>
+                                <a href="https://www.linkedin.com/in/nevin-kadlec/" target="_blank">linkedin.com/in/nevin-kadlec</a><br>
+                                Connect with me professionally and see recommendations from past clients.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">💻</div>
+                        <div class="contact-details">
+                            <h4>GitHub</h4>
+                            <p>
+                                <a href="https://github.com/ErzaKaneki" target="_blank">github.com/ErzaKaneki</a><br>
+                                Review my code quality and see technical examples of my work.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">📍</div>
+                        <div class="contact-details">
+                            <h4>Location</h4>
+                            <p>
+                                Fargo, North Dakota<br>
+                                Available for remote work with clients nationwide.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">☎️</div>
+                        <div class="contact-details">
+                            <h4>Phone Consultation</h4>
+                            <p>
+                                Available by appointment after initial email discussion.<br>
+                                <em>Email communication preferred for project planning.</em>
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h2 class="section-title">Common Questions</h2>
+                <p class="section-subtitle">
+                    Quick answers to help you understand how we can work together
+                </p>
+
+                <div class="faq-grid">
+                    <div class="faq-item">
+                        <h4>Why do you prefer email over phone calls?</h4>
+                        <p>
+                            Email communication ensures we capture all project details accurately, creates a clear 
+                            paper trail for reference, and allows me to provide thoughtful, comprehensive responses. 
+                            This leads to better project outcomes and fewer misunderstandings.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>How quickly do you respond to inquiries?</h4>
+                        <p>
+                            I typically respond within 24 hours, often much faster. My responses are thorough and 
+                            include follow-up questions, initial ideas, and clear next steps for your project.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Do you work with businesses outside North Dakota?</h4>
+                        <p>
+                            Absolutely! I work remotely with small businesses nationwide. Email communication and 
+                            modern development tools make location irrelevant for delivering excellent results.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>What information should I include in my initial email?</h4>
+                        <p>
+                            The more details, the better! Describe your current challenges, how you handle processes 
+                            now, your goals, timeline, and budget range. Don't worry about being too detailed - 
+                            thorough information helps me provide better solutions.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>Can you work within my budget?</h4>
+                        <p>
+                            I offer solutions at various price points and can often suggest phased approaches to 
+                            fit different budgets. Let's discuss your needs and find an approach that works for 
+                            your business and financial situation.
+                        </p>
+                    </div>
+
+                    <div class="faq-item">
+                        <h4>What happens after I contact you?</h4>
+                        <p>
+                            I'll respond with follow-up questions and initial ideas. If it seems like a good fit, 
+                            I'll create a detailed proposal with timeline, features, and fixed pricing. 
+                            No pressure - just clear information to help you make the best decision.
+                        </p>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="social-links">
+                <a href="https://www.linkedin.com/in/nevin-kadlec/" target="_blank">💼</a>
+                <a href="mailto:3rza.kaneki@gmail.com">📧</a>
+                <a href="https://github.com/ErzaKaneki" target="_blank">💻</a>
+            </div>
+            <p>&copy; 2025 Nevin Kadlec. Building technology solutions for business success.</p>
+        </div>
+    </footer>
+</body>
+</html>
