@@ -215,6 +215,17 @@
             border-left: 4px solid #3498db;
         }
 
+        .contact-icon-link {
+            text-decoration: none;
+            color: inherit;
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .contact-icon-link:hover {
+            transform: scale(1.1);
+        }
+
         .contact-icon {
             font-size: 1.5rem;
             color: #3498db;
@@ -239,6 +250,14 @@
 
         .contact-details a:hover {
             text-decoration: underline;
+        }
+
+        .linkedin-logo {
+            height: 24px;
+            vertical-align: middle;
+            background-color: white;
+            padding: 2px;
+            border-radius: 2px;
         }
 
         /* Response Time */
@@ -341,14 +360,6 @@
 
         .social-links a:hover {
             color: #3498db;
-        }
-
-        .linkedin-logo {
-            height: 24px;
-            vertical-align: middle;
-            background-color: white;
-            padding: 2px;
-            border-radius: 2px;
         }
 
         /* Responsive Design */
@@ -527,33 +538,38 @@
                     <h3>Get In Touch</h3>
 
                     <div class="contact-method">
-                        <div class="contact-icon">📧</div>
                         <div class="contact-details">
-                            <h4>Email (Preferred)</h4>
+                            <h4>
+                                <a href="mailto:dev@nevinkadlec.com" class="contact-icon-link">📧 Email (Preferred)</a>
+                            </h4>
                             <p>
-                                <a href="dev@nevinkadlec.com">Email Me</a><br>
                                 Perfect for detailed project discussions and maintaining clear communication records.
                             </p>
                         </div>
                     </div>
 
                     <div class="contact-method">
-                        <div class="contact-icon">💼</div>
                         <div class="contact-details">
-                            <h4>LinkedIn</h4>
+                            <h4>
+                                <a href="https://www.linkedin.com/in/nevin-kadlec/" target="_blank" class="contact-icon-link">
+                                    <img src="images/LI-Logo.png" alt="LinkedIn" class="linkedin-logo">
+                                </a>
+                            </h4>
                             <p>
-                                <a href="https://www.linkedin.com/in/nevin-kadlec/" target="_blank">linkedin.com/in/nevin-kadlec</a><br>
                                 Connect with me professionally and see recommendations from past clients.
                             </p>
                         </div>
                     </div>
 
                     <div class="contact-method">
-                        <div class="contact-icon">💻</div>
                         <div class="contact-details">
-                            <h4>GitHub</h4>
+                            <h4>
+                                <a href="https://github.com/ErzaKaneki" target="_blank" class="contact-icon-link">
+                                    <img src="images/github-mark.png" alt="GitHub" style="height: 24px; vertical-align: middle;">
+                                    GitHub
+                                </a>
+                            </h4>
                             <p>
-                                <a href="https://github.com/ErzaKaneki" target="_blank">github.com/ErzaKaneki</a><br>
                                 Review my code quality and see technical examples of my work.
                             </p>
                         </div>
