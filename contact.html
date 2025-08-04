@@ -695,11 +695,23 @@
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const form = document.querySelector("form");
+        const successMessage = document.getElementById('formSuccess');
 
-        form.addEventListener("submit", function () {
+        form.addEventListener("submit", function (e) {
+            // Don't prevent default - let Formspree handle the submission
+            
+            // Show success message immediately
             setTimeout(() => {
+                successMessage.style.display = 'block';
+                
+                // Reset the form after showing success message
                 form.reset();
-            }, 100);
+                
+                // Hide success message after 5 seconds
+                setTimeout(() => {
+                    successMessage.style.display = 'none';
+                }, 5000);
+            }, 1000); // Wait 1 second to allow submission to process
         });
     });
 </script>
